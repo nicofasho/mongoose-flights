@@ -1,6 +1,10 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 a {
@@ -13,4 +17,22 @@ nav {
   align-items: center;
   background-color: blanchedalmond;
   height: 5vh;
+  width: 75vw;
+}
+
+table {
+  border: 3px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td {
+  border: 3px solid black;
+  height: 5vh;
+  padding-left: 20px;
+}
+
+th {
+  width: 15vw;
+  height: 3vh;
 }
