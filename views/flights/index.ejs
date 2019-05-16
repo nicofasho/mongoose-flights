@@ -1,33 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flights List</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+<table>
+  <thead>
+    <th>Flight Number</th>
+    <th>Airline</th>
+    <th>Departs</th>
+    <th>See Details</th>
+  </thead>
+  <tbody>
+    <% flights.forEach(function(flight, idx) { %>
+    <tr>
+      <td><%= flight.flightNo %></td>
+      <td><%= flight.airline %></td>
+      <td><%= flight.departs.toDateString() %></td>
+      <td>
+        <form action="/flights/<%= flight._id %>" method="GET">
+          <button>Details</button>
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
 
-<body>
-  <nav><a href="/flights">ALL FLIGHTS</a><a href="/flights/new">ADD FLIGHT</a></nav>
-  <h1>List of Flights</h1>
-  <table>
-    <thead>
-      <th>Flight Number</th>
-      <th>Airline</th>
-      <th>Departs</th>
-    </thead>
-    <tbody>
-      <% flights.forEach(function(flight, idx) { %>
-      <tr>
-        <td><%= flight.flightNo %></td>
-        <td><%= flight.airline %></td>
-        <td><%= flight.departs.toDateString() %></td>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
-</body>
-
-</html>
+<%- include('../partials/footer'); %>

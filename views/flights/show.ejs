@@ -1,0 +1,50 @@
+<%- include('../partials/header'); %>
+
+<section id="show-page">
+  <div>Airline: </div>
+  <div class="info"><%= flight.airline %></div>
+  <div>Flight Number:</div>
+  <div class="info"><%= flight.flightNo %></div>
+  <div>Departure Time: </div>
+  <div class="info"><%= flight.departs; %></div>
+  <div>Airport: </div>
+  <div class="info"><%= flight.airport %></div>
+</section>
+<% if (!!flight.destinations[0]) { %>
+<h3>Destinations</h3>
+<section id="destination-grid">
+  <% flight.destinations.forEach(function(destination, idx){ %>
+  <div>Airport: </div>
+  <div class="info"><%= destination.airport %></div>
+  <div>Arrival Time: </div>
+  <div class="info"><%= destination.arrival %></div>
+  <% }) %>
+  <% } %>
+</section>
+<h3>Add a Destination</h3>
+<form action="/flights/<%= flight._id %>" method="POST">
+  <label>Destination Airport:
+    <select name="airport" id="">
+      <% if (!flightDestinations.includes('AUS') && flight.airport !== 'AUS')  { %>
+        <option value="AUS">Austin</option>
+        <% } %>
+      <% if (!flightDestinations.includes('DAL') && flight.airport !== 'DAL')  { %>
+        <option value="DAL">Dallas</option>
+        <% } %>
+      <% if (!flightDestinations.includes('LAX') && flight.airport !== 'LAX')  { %>
+        <option value="LAX">Los Angeles</option>
+        <% } %>
+      <% if (!flightDestinations.includes('SEA') && flight.airport !== 'SEA')  { %>
+        <option value="SEA">Seattle-Tacoma</option>
+        <% } %>
+    </select>
+  </label><br>
+  <label>
+    Arrival Time:
+    <input type="datetime-local" name="arrival" id="">
+  </label><br>
+  <button>Submit Destination</button>
+</form>
+
+
+<%- include('../partials/footer'); %>

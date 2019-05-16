@@ -36,3 +36,19 @@ th {
   width: 15vw;
   height: 3vh;
 }
+
+#show-page {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+#destination-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+.info{
+  font-weight: bold;
+}
