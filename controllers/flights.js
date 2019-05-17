@@ -1,4 +1,5 @@
 var Flight = require('../models/flight');
+var Ticket = require('../models/ticket');
 
 module.exports = {
   index,
@@ -21,19 +22,22 @@ function createDest(req, res) {
 }
 
 function show(req, res) {
-  Flight.findById(req.params.id, function(err, flight) {
-    flight.destinations.sort(function(a, b) {
-      return a.arrival - b.arrival;
+    Flight.findById(req.params.id, function(err, flight) {
+        Ticket.find({flight: flight._id}, function(err, tickets) {
+            flight.destinations.sort(function(a, b) {
+                return a.arrival - b.arrival;
+            });
+            var flightDestinations = [];
+            flight.destinations.forEach(function(d) {
+                flightDestinations.push(d.airport);
+            });
+            res.render('flights/show', {title: 'Flight Details', flight, flightDestinations: flightDestinations, tickets});
+        });
     });
-    var flightDestinations = [];
-    flight.destinations.forEach(function(d) {
-      flightDestinations.push(d.airport);
-    });
+    
     // iterate through flight destinations
-    // add each airport code to a flightDestinations array
-
-    res.render('flights/show', {title: 'Flight Details', flight, flightDestinations: flightDestinations});
-  });
+      // add each airport code to a flightDestinations array
+      // })
 }
 
 function index(req, res) {
