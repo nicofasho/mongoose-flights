@@ -1,5 +1,5 @@
 body {
-    /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-family: 'Lato', sans-serif;
   display: flex;
   justify-content: center;
@@ -13,11 +13,21 @@ a {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: blanchedalmond;
   height: 5vh;
-  width: 75vw;
+  width: 90vw;
+}
+
+nav>div {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+#brand {
+  font-size: 1.5vw;
+  font-weight: bolder;
 }
 
 table {
@@ -49,6 +59,6 @@ th {
   grid-gap: 1rem;
 }
 
-.info{
+.info {
   font-weight: bold;
 }
